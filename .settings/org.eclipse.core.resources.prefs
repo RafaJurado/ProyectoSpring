@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/factura/list.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/imagen/list.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/periodo/list.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/persona/list.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/prop-pers/list.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/prop-serv/list.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/propiedad/list.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/reserva/list.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/servicio/list.jsp=UTF-8

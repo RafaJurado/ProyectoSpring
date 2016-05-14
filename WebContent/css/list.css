@@ -1,0 +1,35 @@
+/* Estil aplicat al cos de la pàgina */
+body {
+   font-family: Helvetica, Arial, sans-serif; 
+   background-color: white;
+}
+
+/* Capçalera de nivell 1 */
+h1 {
+   font-size: large; 
+   color: orange;
+}
+
+table{
+	border: 1px solid blue !important;	
+}
+
+th{
+	background-color: blue !important;
+	color: white !important;
+}
+
+td{
+	background-color: LightSkyBlue;	
+}
+
+td.link{
+	background-color: white;
+}
+
+/* Classe CSS error */
+.error {
+     color: red;
+     font-size:80%
+}
+
