@@ -27,6 +27,7 @@ public class PersonaController {
 		model.addAttribute("personas", personaDao.getPersonas());
 		return "persona/list";
 	}
+	
 	@RequestMapping(value="/add") 
 	public String addPersona(Model model) {
 		model.addAttribute("persona", new Persona());
@@ -35,11 +36,13 @@ public class PersonaController {
 
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("persona") Persona persona,
-	                                BindingResult bindingResult) {  
-		 if (bindingResult.hasErrors()) 
-				return "persona/add";
-		 personaDao.addPersona(persona);
-		 return "redirect:list.html"; 
+	                                BindingResult bindingResult) { 
+		PersonaValidator personaValidator = new PersonaValidator();
+		personaValidator.validate(persona, bindingResult); 
+		if (bindingResult.hasErrors()) 
+			return "persona/add";
+		personaDao.addPersona(persona);
+		return "redirect:list.html"; 
 	 }
 	
 	@RequestMapping(value="/update/{dni}", method = RequestMethod.GET) 
@@ -52,15 +55,17 @@ public class PersonaController {
 	public String processUpdateSubmit(@PathVariable String dni, 
                             @ModelAttribute("persona") Persona persona, 
                             BindingResult bindingResult) {
-		 if (bindingResult.hasErrors()) 
-			 return "persona/update";
-		 personaDao.updatePersona(persona);
-		 return "redirect:../list.html"; 
+		PersonaValidator personaValidator = new PersonaValidator();
+		personaValidator.validate(persona, bindingResult); 
+		if (bindingResult.hasErrors()) 
+			return "persona/update";
+		personaDao.updatePersona(persona);
+		return "redirect:../list.html"; 
 	  }
 	
 	@RequestMapping(value="/delete/{dni}")
 	 public String processDelete(@PathVariable String dni) {
-	           personaDao.deletePersona(dni);;
-	           return "redirect:../list.html"; 
+		personaDao.deletePersona(dni);
+		return "redirect:../list.html"; 
 	 }
 }

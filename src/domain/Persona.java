@@ -24,10 +24,9 @@ public class Persona {
 	
 	public Persona(){
 		super();
-	}
-	
+	}	
 
-//SETTERS y GETTERS	
+	//SETTERS y GETTERS	
 	public String getDni() {
 		return dni;
 	}
@@ -175,9 +174,9 @@ public class Persona {
 	public String toString() {
 		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
 				+ ", fechaRegistro=" + fechaRegistro + ", telefono=" + telefono + ", activo=" + activo
-				+ ", nombreUsuario=" + nombreUsuario + ", contrasenya=" + contrasenya + ", tipoPersona=" + tipoPersona + ", poblacion="
-				+ poblacion + ", provincia=" + provincia + ", tipoVia=" + tipoVia + ", nombreVia=" + nombreVia + ", numero=" + numero + ", escalera="
-				+ escalera + ", puerta=" + puerta + ", codigoPostal=" + codigoPostal + "]";
+				+ ", nombreUsuario=" + nombreUsuario + ", contrasenya=" + contrasenya + ", tipoPersona=" + tipoPersona + ", "
+				+ "poblacion=" + poblacion + ", provincia=" + provincia + ", tipoVia=" + tipoVia + ", nombreVia=" + nombreVia + ", "
+				+ "numero=" + numero + ", escalera=" + escalera + ", puerta=" + puerta + ", codigoPostal=" + codigoPostal + "]";
 	}
 
 }

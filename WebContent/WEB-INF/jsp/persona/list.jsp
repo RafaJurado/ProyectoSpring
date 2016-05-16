@@ -62,5 +62,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br>
+	<a href="add.html">Añadir persona</a>
 </body>
 </html>

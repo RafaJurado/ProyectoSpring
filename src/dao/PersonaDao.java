@@ -1,21 +1,17 @@
 package dao;
 
-
 import java.sql.SQLException;
-
+import java.sql.Timestamp;
+import java.sql.Date;
 import java.sql.ResultSet;
-import java.util.Calendar;
-//import domain.ConnectionManager;
 import domain.Persona;
 import domain.TipoPersona;
-import java.sql.ResultSet;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
 
 @Repository
 public class PersonaDao {
@@ -60,26 +56,28 @@ public class PersonaDao {
 	}	 
 		
 	public Persona getPersona(String dni) {
-		return this.jdbcTemplate.queryForObject("select * from Persona where dni =?",  new Object[] {dni}, new PersonaMapper());
+		return this.jdbcTemplate.queryForObject("select * from Persona where dni =?",  
+												new Object[] {dni}, 
+												new PersonaMapper());
 	}
 	
 	public void addPersona(Persona persona) {
 		this.jdbcTemplate.update(
-				"insert into Persona(idPersona, nombre, apellidos, email, "
-				+ "fechaRegistro, telefono, activo, nombreUsuario, "
-				+ "contrasenya, tipoPersona = CAST(? AS tipopersona), poblacion, "
-				+ "provincia, tipoVia, nombreVia, numero, escalera, puerta, "
-				+ "codigoPostal) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+				"insert into Persona(dni, nombre, apellidos, email, fechaRegistro, telefono, activo, "
+						+ "nombreUsuario, contrasenya,  tipoPersona, poblacion, provincia, tipoVia, nombreVia, numero, "
+						+ "escalera, puerta, codigoPostal) "
+						+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, CAST(? AS tipopersona), ?, ?, ?, ?, ?, ?, ?, ?)", 
+				
 				persona.getDni(), 
 				persona.getNombre(), 
 				persona.getApellidos(), 
 				persona.getEmail(), 
-				persona.getFechaRegistro(), 
+				new Timestamp(System.currentTimeMillis() % 1000), //automatico
 				persona.getTelefono(), 
-				persona.getActivo(), 
+				true, //automatico
 				persona.getNombreUsuario(), 
 				persona.getContrasenya(), 
-				persona.getTipoPersona(), 
+				"USUARIO", //automatico
 				persona.getPoblacion(), 
 				persona.getProvincia(), 
 				persona.getTipoVia(), 
@@ -93,19 +91,18 @@ public class PersonaDao {
 	public void updatePersona(Persona persona) {
 		this.jdbcTemplate.update(
 				"update Persona set nombre = ?, apellidos = ?, email = ?, "
-				+ "fechaRegistro = ?, telefono = ?, activo = ?, nombreUsuario = ?, "
-				+ "contrasenya = ?, tipoPersona = CAST(? AS tipopersona) = ?, "
+				+ "telefono = ?, nombreUsuario = ?, contrasenya = ?, "
 				+ "poblacion = ?, provincia = ?, tipoVia = ?, nombreVia = ?, "
 				+ "numero = ?, escalera = ?, puerta = ?, codigoPostal = ? where dni = ?", 
 				persona.getNombre(), 
 				persona.getApellidos(), 
 				persona.getEmail(), 
-				persona.getFechaRegistro(), 
+//				persona.getFechaRegistro(), 
 				persona.getTelefono(), 
-				persona.getActivo(), 
+//				persona.getActivo(), 
 				persona.getNombreUsuario(), 
 				persona.getContrasenya(), 
-				persona.getTipoPersona(), 
+//				persona.getTipoPersona(), 
 				persona.getPoblacion(), 
 				persona.getProvincia(), 
 				persona.getTipoVia(), 

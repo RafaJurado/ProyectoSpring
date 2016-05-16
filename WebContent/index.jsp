@@ -10,6 +10,7 @@
 <body>
 	<ul>
 	<li><a href="propiedad/list.html">Gesti&oacute;n de Propiedades</a></li>
+	<li><a href="persona/list.html">Gestión de personas</a></li>
 
 	</ul>
 </body>
