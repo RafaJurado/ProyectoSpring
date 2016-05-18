@@ -117,6 +117,5 @@ public class PersonaDao {
 	public void deletePersona(String dni){
 		this.jdbcTemplate.update("delete from Persona where dni = ? ",dni);
 	}
-
 	
 }

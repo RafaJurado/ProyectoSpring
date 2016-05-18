@@ -1,6 +1,10 @@
 package domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jasypt.util.password.BasicPasswordEncryptor;
 
 public class Persona {	
 	private String dni;
@@ -25,6 +29,7 @@ public class Persona {
 	public Persona(){
 		super();
 	}	
+	
 
 	//SETTERS y GETTERS	
 	public String getDni() {
@@ -87,6 +92,7 @@ public class Persona {
 	}
 	
 	public void setNombreUsuario(String nombreUsuario) {
+		
 		this.nombreUsuario = nombreUsuario;
 	}
 	

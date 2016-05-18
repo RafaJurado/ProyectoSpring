@@ -1,5 +1,6 @@
 package controller;
 
+//import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import domain.Persona;
@@ -13,6 +14,7 @@ public class PersonaValidator implements Validator {
   @Override
   public void validate(Object obj, Errors errors) {
 	 Persona persona = (Persona)obj;
+	 //BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 	 
 	 if (persona.getDni().trim().equals(""))
 		 errors.rejectValue("dni", "obligatorio", "valor requerido");
@@ -24,8 +26,10 @@ public class PersonaValidator implements Validator {
 		 errors.rejectValue("email", "obligatorio", "valor requerido");
 	 if (persona.getNombreUsuario().equals(""))
 		 errors.rejectValue("nombreUsuario", "obligatorio", "valor requerido");
-	 if (persona.getContrasenya().equals(""))
+	 
+	 if (persona.getContrasenya().equals("")){
 		 errors.rejectValue("contrasenya", "obligatorio", "valor requerido");
+	 } 	 
 	 if (persona.getPoblacion().equals(""))
 		 errors.rejectValue("poblacion", "obligatorio", "valor requerido");
 	 if (persona.getProvincia().equals(""))
